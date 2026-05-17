@@ -116,6 +116,28 @@
 </script>
 </div>
 
+//添加
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
 
+    const audio = document.getElementById("main_audio");
+    const hint = document.getElementById("music-hint");
+
+    hint.addEventListener("click", function () {
+
+        audio.play().catch(() => {});
+
+        hint.style.opacity = "0";
+        hint.style.transition = "all 1s ease";
+
+        setTimeout(() => {
+            hint.style.display = "none";
+        }, 1000);
+
+    });
+
+});
+</script>
+//添加完毕 
 </body>
 </html>
