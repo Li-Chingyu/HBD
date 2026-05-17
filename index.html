@@ -119,7 +119,7 @@
         */
 
         adjustCodePosition()
-    }
+    <!-- } -->
 </script>
 </div>
     
@@ -177,6 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+    <!--
     <script>
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -211,6 +212,53 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.addEventListener("click", startAll);
     document.addEventListener("touchstart", startAll);
+
+});
+</script>
+    -->
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const audio = document.getElementById("main_audio");
+    const hint = document.getElementById("music-hint");
+
+    let started = false;
+
+    function startAll() {
+
+        if (started) return;
+        started = true;
+
+        // 🎵 音乐
+        audio.play().catch(() => {});
+
+        // 💖 心形动画
+        startHeartAnimation();
+
+        // ✍️ 打字机
+        $("#code").typewriter();
+
+        // ⏱ 时间
+        timeElapse(together);
+        setInterval(function () {
+            timeElapse(together);
+        }, 500);
+
+        // 🌙 淡出遮罩
+        if (hint) {
+            hint.style.opacity = "0";
+            hint.style.transition = "all 1s ease";
+            setTimeout(() => hint.remove(), 1000);
+        }
+    }
+
+    // ✅ 绑定在遮罩上（关键）
+    if (hint) {
+        hint.addEventListener("click", startAll);
+        hint.addEventListener("touchstart", startAll);
+    } else {
+        document.addEventListener("click", startAll);
+    }
 
 });
 </script>
