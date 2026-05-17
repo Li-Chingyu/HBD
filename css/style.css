@@ -17,12 +17,12 @@ body{background: url(../images/houtaibizhi.jpg);}
 }
 
 .hint-box {
-    color: #fffh;
-    font-size: 220px;
+    color: #fff;
+    font-size: 22px;
     text-align: center;
-    padding: 200px 300px;
-    border: 20px solid #fffh;
-    border-radius: 120px;
+    padding: 20px 30px;
+    border: 2px solid #fff;
+    border-radius: 12px;
     animation: glow 1.5s infinite alternate;
 }
 
