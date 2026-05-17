@@ -118,8 +118,7 @@
         }, 500);
         */
 
-        adjustCodePosition();
-        $("#code").typewriter();
+        adjustCodePosition()
     }
 </script>
 </div>
@@ -175,19 +174,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const audio = document.getElementById("main_audio");
     const hint = document.getElementById("music-hint");
-/*
-    hint.addEventListener("click", function () {
-
-        audio.play().catch(() => {});
-
-        hint.style.opacity = "0";
-        hint.style.transition = "all 1s ease";
-
-        setTimeout(() => {
-            hint.style.display = "none";
-        }, 1000);
-    });
-    */
 
 });
 </script>
@@ -210,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
         startHeartAnimation();
 
         // ✍️ 动画2：打字机（你原本就有）
-      //  $("#code").typewriter();
+        $("#code").typewriter();
 
         // ⏱ 时间动画
         timeElapse(together);
