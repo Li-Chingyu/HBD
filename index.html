@@ -186,8 +186,8 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => {
             hint.style.display = "none";
         }, 1000);
-*/
     });
+    */
 
 });
 </script>
@@ -228,45 +228,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
-    <script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    const audio = document.getElementById("main_audio");
-    let started = false;
-
-    function startAll() {
-
-        if (started) return;
-        started = true;
-
-        // 🎵 音乐
-        audio.play().catch(() => {});
-
-        // 💖 心形动画
-        startHeartAnimation();
-
-        // ✍️ 打字机（只执行一次）
-        $("#code").typewriter();
-
-        // ⏱ 时间动画
-        timeElapse(together);
-        setInterval(function () {
-            timeElapse(together);
-        }, 500);
-
-        // 🌙 淡出提示层
-        const hint = document.getElementById("music-hint");
-        if (hint) {
-            hint.style.opacity = "0";
-            hint.style.transition = "all 1s ease";
-            setTimeout(() => hint.remove(), 1000);
-        }
-    }
-
-    document.addEventListener("click", startAll);
-    document.addEventListener("touchstart", startAll);
-
-});
-</script>
+   
 </body>
 </html>
