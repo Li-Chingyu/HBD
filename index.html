@@ -128,7 +128,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     const audio = document.getElementById("main_audio");
-
+/*
     function startExperience() {
 
         // 防止重复触发
@@ -149,6 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // 👉 点击整个网页任何地方
     document.addEventListener("click", startExperience);
     document.addEventListener("touchstart", startExperience);
+    */
 
     // 🌟 简单粒子效果（可删可留）
     function startParticles() {
@@ -174,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const audio = document.getElementById("main_audio");
     const hint = document.getElementById("music-hint");
-
+/*
     hint.addEventListener("click", function () {
 
         audio.play().catch(() => {});
@@ -185,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => {
             hint.style.display = "none";
         }, 1000);
-
+*/
     });
 
 });
@@ -209,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
         startHeartAnimation();
 
         // ✍️ 动画2：打字机（你原本就有）
-        $("#code").typewriter();
+      //  $("#code").typewriter();
 
         // ⏱ 时间动画
         timeElapse(together);
@@ -220,6 +221,46 @@ document.addEventListener("DOMContentLoaded", function () {
         // 可选：移除提示层
         const hint = document.getElementById("music-hint");
         if (hint) hint.remove();
+    }
+
+    document.addEventListener("click", startAll);
+    document.addEventListener("touchstart", startAll);
+
+});
+</script>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const audio = document.getElementById("main_audio");
+    let started = false;
+
+    function startAll() {
+
+        if (started) return;
+        started = true;
+
+        // 🎵 音乐
+        audio.play().catch(() => {});
+
+        // 💖 心形动画
+        startHeartAnimation();
+
+        // ✍️ 打字机（只执行一次）
+        $("#code").typewriter();
+
+        // ⏱ 时间动画
+        timeElapse(together);
+        setInterval(function () {
+            timeElapse(together);
+        }, 500);
+
+        // 🌙 淡出提示层
+        const hint = document.getElementById("music-hint");
+        if (hint) {
+            hint.style.opacity = "0";
+            hint.style.transition = "all 1s ease";
+            setTimeout(() => hint.remove(), 1000);
+        }
     }
 
     document.addEventListener("click", startAll);
