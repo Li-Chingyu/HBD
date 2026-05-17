@@ -97,7 +97,7 @@
     together.setMinutes(0);
     together.setSeconds(0);
     together.setMilliseconds(0);
-    
+    <!--
     if (!document.createElement('canvas').getContext) {
         var msg = document.createElement("div");
         msg.id = "errorMsg";
@@ -116,6 +116,7 @@
         setInterval(function () {
             timeElapse(together);
         }, 500);
+        -->
 
         adjustCodePosition();
         $("#code").typewriter();
@@ -186,6 +187,43 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 1000);
 
     });
+
+});
+</script>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const audio = document.getElementById("main_audio");
+
+    let started = false;
+
+    function startAll() {
+
+        if (started) return;
+        started = true;
+
+        // 🎵 音乐
+        audio.play().catch(() => {});
+
+        // 💖 动画1：心形动画
+        startHeartAnimation();
+
+        // ✍️ 动画2：打字机（你原本就有）
+        $("#code").typewriter();
+
+        // ⏱ 时间动画
+        timeElapse(together);
+        setInterval(function () {
+            timeElapse(together);
+        }, 500);
+
+        // 可选：移除提示层
+        const hint = document.getElementById("music-hint");
+        if (hint) hint.remove();
+    }
+
+    document.addEventListener("click", startAll);
+    document.addEventListener("touchstart", startAll);
 
 });
 </script>
