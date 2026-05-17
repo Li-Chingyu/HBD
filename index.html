@@ -126,6 +126,50 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     const audio = document.getElementById("main_audio");
+
+    function startExperience() {
+
+        // 防止重复触发
+        if (window.started) return;
+        window.started = true;
+
+        // 🎵 播放音乐
+        audio.play().catch(() => {});
+
+        // ✨ 触发页面动画（你可以改）
+        document.body.classList.add("started");
+
+        // 可选：生成闪光/粒子效果
+        startParticles();
+
+    }
+
+    // 👉 点击整个网页任何地方
+    document.addEventListener("click", startExperience);
+    document.addEventListener("touchstart", startExperience);
+
+    // 🌟 简单粒子效果（可删可留）
+    function startParticles() {
+        setInterval(() => {
+            const star = document.createElement("div");
+            star.innerHTML = "✨";
+            star.style.position = "fixed";
+            star.style.left = Math.random() * 100 + "vw";
+            star.style.top = "100vh";
+            star.style.fontSize = "20px";
+            star.style.animation = "floatUp 3s linear forwards";
+            document.body.appendChild(star);
+
+            setTimeout(() => star.remove(), 3000);
+        }, 300);
+    }
+
+});
+</script>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const audio = document.getElementById("main_audio");
     const hint = document.getElementById("music-hint");
 
     hint.addEventListener("click", function () {
