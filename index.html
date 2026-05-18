@@ -215,6 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
     -->
+    <!--
     <script>
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -269,6 +270,88 @@ document.addEventListener("DOMContentLoaded", function () {
         hint.addEventListener("touchstart", startAll);
     } else {
         document.addEventListener("click", startAll);
+    }
+
+});
+</script>
+    -->
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const audio = document.getElementById("main_audio");
+    const hint = document.getElementById("music-hint");
+
+    let started = false;
+
+    function startAll() {
+
+        if (started) return;
+        started = true;
+
+        // 💖 心形动画
+        startHeartAnimation();
+
+        // ✍️ 打字机
+        $("#code").typewriter();
+
+        // ⏱ 时间
+        timeElapse(together);
+        setInterval(function () {
+            timeElapse(together);
+        }, 500);
+
+        // 🎆 烟花
+        startFireworks();
+
+        // 🌙 遮罩消失
+        if (hint) {
+            hint.style.opacity = "0";
+            hint.style.transition = "all 1s ease";
+            setTimeout(() => hint.remove(), 1000);
+        }
+    }
+
+    // 🎯 点击入口（关键：先播放音乐）
+    if (hint) {
+        hint.onclick = function () {
+            audio.play().catch(()=>{});
+            startAll();
+        };
+    }
+
+    // 💖 点击掉爱心
+    document.addEventListener("click", function (e) {
+        createHeart(e.clientX, e.clientY);
+    });
+
+    function createHeart(x, y) {
+        const heart = document.createElement("div");
+        heart.innerHTML = "💖";
+        heart.style.position = "fixed";
+        heart.style.left = x + "px";
+        heart.style.top = y + "px";
+        heart.style.fontSize = "20px";
+        heart.style.pointerEvents = "none";
+        heart.style.animation = "floatUp 2s ease-out forwards";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 2000);
+    }
+
+    // 🎆 烟花效果
+    function startFireworks() {
+        setInterval(() => {
+            const fire = document.createElement("div");
+            fire.innerHTML = "🎆";
+            fire.style.position = "fixed";
+            fire.style.left = Math.random() * 100 + "vw";
+            fire.style.top = Math.random() * 50 + "vh";
+            fire.style.fontSize = "30px";
+            fire.style.animation = "boom 1s ease-out forwards";
+            document.body.appendChild(fire);
+
+            setTimeout(() => fire.remove(), 1000);
+        }, 800);
     }
 
 });
