@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
         started = true;
 
         // 🎵 音乐
-        audio.play().catch(() => {});
+        /*audio.play().catch(() => {});*/
 
         // 💖 心形动画
         startHeartAnimation();
@@ -253,7 +253,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ✅ 绑定在遮罩上（关键）
     if (hint) {
-        hint.addEventListener("click", startAll);
+        <!--hint.addEventListener("click", startAll);-->
+        hint.onclick = function () {
+
+    const audio = document.getElementById("main_audio");
+
+    // 🎵 第一时间播放（关键）
+    audio.play().catch(e => {
+        console.log("播放失败:", e);
+    });
+
+    // 再执行动画
+    startAll();
+    };
         hint.addEventListener("touchstart", startAll);
     } else {
         document.addEventListener("click", startAll);
