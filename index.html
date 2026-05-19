@@ -286,6 +286,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function startAll() {
 
+        setTimeout(() => {
+    document.getElementById("cake").classList.add("show");
+}, 1500);  // ⏱ 1.5秒后出现（你可以改）
+
         startFireworks();
 
         if (started) return;
