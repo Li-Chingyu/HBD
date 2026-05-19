@@ -91,3 +91,14 @@ body {
     pointer-events: none;
     z-index: -1;
 }
+
+#cake {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+    transition: all 2s ease;
+}
+
+#cake.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
