@@ -296,10 +296,19 @@ document.addEventListener("DOMContentLoaded", function () {
         started = true;
 
         // 💖 心形动画
-        startHeartAnimation();
+       // startHeartAnimation();
+        $("#code").typewriter();
+
+setTimeout(() => {
+    startHeartAnimation();
+}, 3500);
+
+setTimeout(() => {
+    startFireworks();
+}, 5000);
 
         // ✍️ 打字机
-        $("#code").typewriter();
+      //  $("#code").typewriter();
 
         // ⏱ 时间
         timeElapse(together);
@@ -308,7 +317,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 500);
 
         // 🎆 烟花
-        startFireworks();
+       // startFireworks();
 
         // 🌙 遮罩消失
         if (hint) {
